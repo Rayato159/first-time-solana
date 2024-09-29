@@ -1,0 +1,30 @@
+{
+  "name": "hello-solana",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./client/client.ts",
+    "clean": "pnpm run clean:program",
+    "build:program": "cargo build-bpf --manifest-path=./program/Cargo.toml --bpf-out-dir=./dist/program",
+    "clean:program": "cargo clean --manifest-path=./program/Cargo.toml && rm -rf ./dist",
+    "test:program": "cargo test-bpf --manifest-path=./program/Cargo.toml",
+    "deploy:program": "solana program deploy ./dist/program/program.so"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@solana/web3.js": "^1.95.3",
+    "mz": "^2.7.0"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.7",
+    "@types/mz": "^2.7.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
